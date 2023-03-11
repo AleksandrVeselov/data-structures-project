@@ -8,6 +8,7 @@ class Node:
         :param data: данные, которые будут храниться в узле
         """
         self.data = data
+        self.next_node = next_node
 
 
 class Stack:
@@ -23,7 +24,11 @@ class Stack:
 
         :param data: данные, которые будут добавлены на вершину стека
         """
-        self.stack.append(data)
+        if not self.stack:
+            self.stack.append(Node(data, None))
+
+        else:
+            self.stack.append(Node(data, self.stack[-1]))
 
     def pop(self):
         """
@@ -32,4 +37,5 @@ class Stack:
         :return: данные удаленного элемента
         """
         item = self.stack.pop()
+        self.stack[-1].next_node = None
         return item

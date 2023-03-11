@@ -12,8 +12,9 @@ if __name__ == '__main__':
     stack.push('data1')
     stack.push('data2')
     stack.push('data3')
-    print(stack.top.data)  # data3
-    print(stack.top.next_node.data)  # data2
-    print(stack.top.next_node.next_node.data)  # data1
-    print(stack.top.next_node.next_node.next_node)  # None
-    print(stack.top.next_node.next_node.next_node.data)  # AttributeError: 'NoneType' object has no attribute 'data'
+    print(stack.stack)
+    print(stack.pop().data)  # data3
+    print(stack.pop().next_node.data)  # data2
+    print(stack.pop().next_node.next_node.data)  # data1
+    print(stack.pop().next_node.next_node.next_node)  # None
+    print(stack.pop().next_node.next_node.next_node.data)  # AttributeError: 'NoneType' object has no attribute 'data'
