@@ -6,20 +6,22 @@ from src import stack
 class TestNode(unittest.TestCase):
 
     def test_stack(self):
-        test_data = stack.Node('тест инициализатора node')
-        self.assertEqual(test_data.data, 'тест инициализатора node')
-
-        # Тест инициализатора Stack
         my_stack = stack.Stack()
-        self.assertEqual(my_stack.stack, [])
+        my_stack.push('data1')
+        self.assertEqual(my_stack.top.data, 'data1')
+        my_stack.push('data2')
+        self.assertEqual(my_stack.top.data, 'data2')
+        self.assertEqual(my_stack.top.next_node.data, 'data1')
+        top = my_stack.pop()
+        self.assertEqual(top.data, 'data2')
+        self.assertEqual(my_stack.top.data, 'data1')
 
-        # Тест метода push(добавление в конец стека)
-        my_stack.push('тест методов push/pop')
-        my_stack.push('тест методов push/pop_1')
-        self.assertEqual(my_stack.stack[0].data, 'тест методов push/pop')
-        self.assertEqual(my_stack.stack[1].data, 'тест методов push/pop_1')
+    def test_node(self):
+        n1 = stack.Node(5, None)
+        n2 = stack.Node('a', n1)
+        self.assertEqual(n1.data, 5)
+        self.assertEqual(n1.next_node, None)
+        self.assertEqual(n2.data, 'a')
+        self.assertEqual(n2.next_node, n1)
 
-        # Тест метода pop(вытаскивание последнего объекта, помещенного в стек)
-        pop_data = my_stack.pop()
-        self.assertEqual(pop_data.data, 'тест методов push/pop_1')
-        self.assertEqual(len(my_stack.stack), 1)
+
