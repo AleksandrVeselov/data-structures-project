@@ -22,3 +22,4 @@ class TestNode(unittest.TestCase):
         # Тест метода pop(вытаскивание последнего объекта, помещенного в стек)
         pop_data = my_stack.pop()
         self.assertEqual(pop_data.data, 'тест методов push/pop_1')
+        self.assertEqual(len(my_stack.stack), 1)
