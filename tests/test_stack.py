@@ -28,4 +28,10 @@ class TestNode(unittest.TestCase):
         self.assertEqual(n2.data, 'a')
         self.assertEqual(n2.next_node, n1)
 
+    def test_str(self):
+        my_stack = stack.Stack()  # Создание класса Stack
+        my_stack.push('data1')  # Добавление в стек данных
+        assert str(my_stack) == 'data1'
+
+
 
