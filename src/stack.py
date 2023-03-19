@@ -37,4 +37,11 @@ class Stack:
         return item.data
 
     def __str__(self):
-        return self.top.data
+        stack = []  # Список с данными всех элементов из стека(изначально пуст)
+        node = self.top  # Берем последний положенный в стек элемент
+
+        # Пока не доберемся первого элемента (у него в атрибуте next_node ничего нет)
+        while node is not None:
+            stack.append(node.data)
+            node = node.next_node
+        return '\n'.join(stack)
