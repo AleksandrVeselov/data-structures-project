@@ -25,13 +25,17 @@ class Queue:
 
         :param data: данные, которые будут добавлены в очередь
         """
+        # Если нет начала очереди, добавляем в начало
         if not self.head:
             self.head = Node(data, next_node=None)
 
+        # Если нет хвоста очереди, добавляем в хвост
         elif not self.tail:
             self.tail = Node(data, next_node=None)
             self.head.next_node = self.tail
 
+        # Если есть и голова и хвост, добавляем в хвост, предварительно изменив ссылку на следующий элемент у того,
+        # кто уже находился в хвосте
         else:
             node = Node(data, next_node=None)
             self.tail.next_node = node
@@ -43,10 +47,16 @@ class Queue:
 
         :return: данные удаленного элемента
         """
-        if self.tail:
-            node = self.tail
-            self.tail = self.tail.next_node
-
-    def __str__(self):
-        """Магический метод для строкового представления объекта"""
         pass
+
+    def __str__(self) -> str:
+        """Магический метод для строкового представления объекта"""
+        list_deque = []  # Список с данными элементов из очереди(сначала пуст)
+        node = self.head  # Чтение начинается с головы (FIFO)
+
+        # Пока не достигнем последнего элемента, у которого в атрибуте next_node ничего нет
+        while node is not None:
+            list_deque.append(node.data)
+            node = node.next_node
+
+        return '\n'.join(list_deque)
