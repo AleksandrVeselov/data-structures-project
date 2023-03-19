@@ -32,6 +32,8 @@ class TestNode(unittest.TestCase):
         my_stack = stack.Stack()  # Создание класса Stack
         my_stack.push('data1')  # Добавление в стек данных
         assert str(my_stack) == 'data1'
+        my_stack.push('data2')
+        assert str(my_stack) == 'data2\ndata1'
 
 
 
