@@ -33,6 +33,19 @@ class Stack:
         :return: данные удаленного элемента
         """
         item = self.top
+
+        self.top = item.next_node
+        return item.data
+
+    def __str__(self):
+        stack = []  # Список с данными всех элементов из стека(изначально пуст)
+        node = self.top  # Берем последний положенный в стек элемент
+
+        # Пока не доберемся первого элемента (у него в атрибуте next_node ничего нет)
+        while node is not None:
+            stack.append(node.data)
+            node = node.next_node
+        return '\n'.join(stack)
         if item:
             self.top = item.next_node
             return item.data

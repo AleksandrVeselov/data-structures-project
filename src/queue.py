@@ -7,7 +7,8 @@ class Node:
 
         :param data: данные, которые будут храниться в узле
         """
-        pass
+        self.data = data
+        self.next_node = next_node
 
 
 class Queue:
@@ -15,7 +16,8 @@ class Queue:
 
     def __init__(self):
         """Конструктор класса Queue"""
-        pass
+        self.head = None
+        self.tail = None
 
     def enqueue(self, data):
         """
@@ -23,7 +25,21 @@ class Queue:
 
         :param data: данные, которые будут добавлены в очередь
         """
-        pass
+        # Если нет начала очереди, добавляем в начало
+        if not self.head:
+            self.head = Node(data, next_node=None)
+
+        # Если нет хвоста очереди, добавляем в хвост
+        elif not self.tail:
+            self.tail = Node(data, next_node=None)
+            self.head.next_node = self.tail
+
+        # Если есть и голова и хвост, добавляем в хвост, предварительно изменив ссылку на следующий элемент у того,
+        # кто уже находился в хвосте
+        else:
+            node = Node(data, next_node=None)
+            self.tail.next_node = node
+            self.tail = node
 
     def dequeue(self):
         """
@@ -33,6 +49,14 @@ class Queue:
         """
         pass
 
-    def __str__(self):
+    def __str__(self) -> str:
         """Магический метод для строкового представления объекта"""
-        pass
+        list_deque = []  # Список с данными элементов из очереди(сначала пуст)
+        node = self.head  # Чтение начинается с головы (FIFO)
+
+        # Пока не достигнем последнего элемента, у которого в атрибуте next_node ничего нет
+        while node is not None:
+            list_deque.append(node.data)
+            node = node.next_node
+
+        return '\n'.join(list_deque)
