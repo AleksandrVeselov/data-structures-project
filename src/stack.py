@@ -33,6 +33,7 @@ class Stack:
         :return: данные удаленного элемента
         """
         item = self.top
+
         self.top = item.next_node
         return item.data
 
@@ -45,3 +46,8 @@ class Stack:
             stack.append(node.data)
             node = node.next_node
         return '\n'.join(stack)
+        if item:
+            self.top = item.next_node
+            return item.data
+        else:
+            return 'Стек пуст'
