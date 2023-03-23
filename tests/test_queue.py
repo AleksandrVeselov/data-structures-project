@@ -32,4 +32,18 @@ class TestQueue(unittest.TestCase):
         q.enqueue('data3')  # добавление в очередь третьего элемента
         assert str(q) == 'data1\ndata2\ndata3'
 
+    def test_dequeue(self):
+        # Создаем пустую очередь
+        q = queue.Queue()
+
+        # Добавляем данных в очередь
+        q.enqueue('data1')
+        q.enqueue('data2')
+        q.enqueue('data3')
+
+        assert q.dequeue() == 'data1'
+        assert q.dequeue() == 'data2'
+        assert q.dequeue() == 'data3'
+        assert q.dequeue() is None
+
 
