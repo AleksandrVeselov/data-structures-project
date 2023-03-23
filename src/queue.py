@@ -27,12 +27,7 @@ class Queue:
         """
         # Если нет начала очереди, добавляем в начало
         if not self.head:
-            self.head = Node(data, next_node=None)
-
-        # Если нет хвоста очереди, добавляем в хвост
-        elif not self.tail:
-            self.tail = Node(data, next_node=None)
-            self.head.next_node = self.tail
+            self.head = self.tail = Node(data, next_node=None)
 
         # Если есть и голова и хвост, добавляем в хвост, предварительно изменив ссылку на следующий элемент у того,
         # кто уже находился в хвосте
@@ -47,7 +42,12 @@ class Queue:
 
         :return: данные удаленного элемента
         """
-        pass
+        node = self.head
+        if node:
+            self.head = node.next_node
+            return node.data
+        else:
+            return self.head
 
     def __str__(self) -> str:
         """Магический метод для строкового представления объекта"""
