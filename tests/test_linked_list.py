@@ -18,7 +18,7 @@ class TestLinkedList(unittest.TestCase):
         ll.insert_beginning({'id': 0})
 
         # Проверяем правильность реализации связного списка и метод __str__
-        assert str(ll) == " {'id': 0} -> {'id': 1} -> {'id': 2} -> {'id': 3} -> None"
+        assert str(ll) == "{'id': 0} -> {'id': 1} -> {'id': 2} -> {'id': 3} -> None"
 
     def test_init_node(self):
         """Тест инициализатора класса Node"""
