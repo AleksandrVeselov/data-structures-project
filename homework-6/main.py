@@ -16,7 +16,6 @@ if __name__ == '__main__':
     # {'id': 1, 'username': 'lazzy508509'}
     # {'id': 2, 'username': 'mik.roz'}
     # {'id': 3, 'username': 'mosh_s'}
-
     # метод get_data_by_id()
     user_data = ll.get_data_by_id(3)
     assert user_data == {'id': 3, 'username': 'mosh_s'}
