@@ -46,15 +46,16 @@ class LinkedList:
                 return True
         return False
 
-    def to_list(self) -> dict:
-        """Генератор данных о каждом элементе связного списка"""
-
+    def to_list(self) -> list:
+        """Преобразование связного списка в обычный"""
+        linked_list = []
         beginning = self.head  # Начало связного списка
 
         # Цикл пока не достигнем конца связного списка
         while beginning:
-            yield beginning.data  # выдача данных из элемента связного списка
+            linked_list.append(beginning.data)  # выдача данных из элемента связного списка
             beginning = beginning.next_node  # присвоение beginning ссылки на следующий элемент связного списка
+        return linked_list
 
     def get_data_by_id(self, element_id: int) -> dict | str:
         """Получение данных из связного списка по переданному ключу id"""
@@ -77,8 +78,8 @@ class LinkedList:
 
         ll_string = ''
         while node:
-            ll_string += f' {str(node.data)} ->'
+            ll_string += f'{str(node.data)} -> '
             node = node.next_node
 
-        ll_string += ' None'
+        ll_string += 'None'
         return ll_string
