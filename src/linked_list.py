@@ -17,34 +17,18 @@ class LinkedList:
         """Принимает данные (словарь) и добавляет узел с этими данными в начало связанного списка"""
 
         # если данные - словарь, и в словаре есть ключ id
-        if self.check_data(data):
-            if not self.head:
-                self.head = self.tail = Node(data)
-            else:
-                new_node = Node(data)
-                new_node.next_node = self.head
-                self.head = new_node
+        if not self.head:
+            self.head = self.tail = Node(data)
         else:
-            print('Данные не являются словарем или в словаре нет id')
+            new_node = Node(data)
+            new_node.next_node = self.head
+            self.head = new_node
 
     def insert_at_end(self, data: dict) -> None:
         """Принимает данные (словарь) и добавляет узел с этими данными в конец связанного списка"""
-
-        # если данные - словарь, и в словаре есть ключ id
-        if self.check_data(data):
-            new_node = Node(data)
-            self.tail.next_node = new_node
-            self.tail = new_node
-        else:
-            print('Данные не являются словарем или в словаре нет id')
-
-    @staticmethod
-    def check_data(data) -> bool:
-        """Метод для проверки данных на предмет того что это словарь и в нем есть ключ id"""
-        if isinstance(data, dict):
-            if data.get('id') is not None:
-                return True
-        return False
+        new_node = Node(data)
+        self.tail.next_node = new_node
+        self.tail = new_node
 
     def to_list(self) -> list:
         """Преобразование связного списка в обычный"""
@@ -64,10 +48,12 @@ class LinkedList:
 
         # Цикл пока не достигнем конца связного списка
         while beginning:
-            if beginning.data['id'] == element_id:
-                return beginning.data  # возвращение элемента если значение по ключу id совпадает с переданным
+            try:
+                if beginning.data['id'] == element_id:
+                    return beginning.data  # возвращение элемента если значение по ключу id совпадает с переданным
+            except TypeError:
+                print('Данные не являются словарем или в словаре нет id.')
             beginning = beginning.next_node  # присвоение beginning ссылки на следующий элемент связного списка
-
         return f'Данных по id {element_id} не найдено'  # Если нужного id не найдено
 
     def __str__(self) -> str:
