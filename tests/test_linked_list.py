@@ -30,3 +30,28 @@ class TestLinkedList(unittest.TestCase):
         assert node1.next_node.data == {'id': 2}
 
 
+    def test_to_list(self):
+        """Тест метода to_list"""
+        # Создаем пустой односвязный список
+        ll = linked_list.LinkedList()
+
+        # Добавляем данные
+        ll.insert_beginning({'id': 1})
+        ll.insert_at_end({'id': 2})
+        ll.insert_at_end({'id': 3})
+        ll.insert_beginning({'id': 0})
+        assert ll.to_list() == [{'id': 0}, {'id': 1}, {'id': 2}, {'id': 3}]
+
+    def test_get_data_by_id(self):
+        """тест метода get_data_by_id"""
+        # Создаем пустой односвязный список
+        ll = linked_list.LinkedList()
+
+        # Добавляем данные
+        ll.insert_beginning({'id': 1})
+        ll.insert_at_end({'id': 2})
+        ll.insert_at_end({'id': 3})
+        ll.insert_beginning({'id': 0})
+        assert ll.get_data_by_id(2) == {'id': 2}  # Проверяем работу с корректным ID
+        assert ll.get_data_by_id(55) == 'Данных по id 55 не найдено'  # Проверяем работу с некорректным ID
+
