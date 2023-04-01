@@ -18,7 +18,6 @@ class TestLinkedList(unittest.TestCase):
         ll.insert_beginning({'id': 0})
 
         # Проверяем правильность реализации связного списка и метод __str__
-        print(ll)
         assert str(ll) == "{'id': 0} -> {'id': 1} -> {'id': 2} -> {'id': 3} -> None"
 
     def test_init_node(self):
@@ -29,6 +28,7 @@ class TestLinkedList(unittest.TestCase):
 
         assert node1.data == {'id': 1}
         assert node1.next_node.data == {'id': 2}
+
 
     def test_to_list(self):
         """Тест метода to_list"""
@@ -54,3 +54,4 @@ class TestLinkedList(unittest.TestCase):
         ll.insert_beginning({'id': 0})
         assert ll.get_data_by_id(2) == {'id': 2}  # Проверяем работу с корректным ID
         assert ll.get_data_by_id(55) == 'Данных по id 55 не найдено'  # Проверяем работу с некорректным ID
+

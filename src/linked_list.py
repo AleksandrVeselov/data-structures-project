@@ -16,7 +16,6 @@ class LinkedList:
     def insert_beginning(self, data: dict) -> None:
         """Принимает данные (словарь) и добавляет узел с этими данными в начало связанного списка"""
 
-        # если данные - словарь, и в словаре есть ключ id
         if not self.head:
             self.head = self.tail = Node(data)
         else:
